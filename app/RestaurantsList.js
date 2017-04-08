@@ -7,8 +7,10 @@ import {
   Subtitle,
   TouchableOpacity,
   Screen,
-  Divider,
+  Divider, ScrollView
 } from '@shoutem/ui';
+
+import { Parallax, ScrollDriver } from '@shoutem/animation'
 
 import {
   NavigationBar,
@@ -17,9 +19,11 @@ import {
 import { connect } from 'react-redux';
 import { navigatePush } from './redux';
 
+const driver = new ScrollDriver();
+
 class RestaurantsList extends Component {
   static propTypes = {
-    onButtonPress: React.PropTypes.func,
+    addPropertyOfTheDayView: React.PropTypes.func,
   };
 
   constructor(props) {
@@ -35,16 +39,21 @@ class RestaurantsList extends Component {
     const { onButtonPress } = this.props;
 
     return (
-      <TouchableOpacity onPress={() => onButtonPress(restaurant)}>
-        <Image
-          styleName="large-banner"
-          source={{ uri: restaurant.image.url }}
-        >
+      <TouchableOpacity style={{height: 20}} onPress={() => onButtonPress(restaurant)}>
+        <ScrollView >
+          <Parallax  driver={driver}
+                     scrollSpeed={2}>
+            <Image
+                styleName="large-banner"
+                source={{ uri: restaurant.image.url }}
+            />
+          </Parallax>
           <Tile>
             <Title styleName="md-gutter-bottom">{restaurant.name}</Title>
             <Subtitle styleName="sm-gutter-horizontal">{restaurant.address}</Subtitle>
           </Tile>
-        </Image>
+        </ScrollView>
+
         <Divider styleName="line" />
       </TouchableOpacity>
     );
@@ -65,9 +74,9 @@ class RestaurantsList extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  onButtonPress: (restaurant) => {
+  addPropertyOfTheDayView: (restaurant) => {
     dispatch(navigatePush({
-      key: 'Dashboard',
+      key: 'JobDetails',
       title: 'Details',
     }, { category }));
   },

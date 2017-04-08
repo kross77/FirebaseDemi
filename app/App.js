@@ -4,10 +4,9 @@ import {connect} from "react-redux";
 import {CardStack, NavigationBar} from "@shoutem/ui/navigation";
 import {navigatePop} from "./redux";
 import theme from "./theme";
-import SelectCategory from "./containers/SelectCategory";
-import AddCategory from "./containers/AddCategory";
-import AddItem from "./containers/AddItem";
-import Dashboard from "./containers/Dashboard";
+import SelectCity from "./containers/SelectCity";
+import PropertyOfTheDay from "./containers/PropertyOfTheDay/PropertyOfTheDay";
+import Login from "./containers/Login/index";
 
 class App extends Component {
 
@@ -36,32 +35,24 @@ class App extends Component {
 
 	renderScene(props) {
 		const routes = {
-			SelectCategory,
-			AddCategory,
-			Dashboard,
-			AddItem,
+			SelectCity,
+			PropertyOfTheDay,
+			Login,
 		};
 
 		const {route} = props.scene;
 
-		let Screen = routes[route.key] ? routes[route.key] : SelectCategory;
+		let Screen = routes[route.key] ? routes[route.key] : Login;
 		return (<Screen {...route.props} />);
 	}
 
 	renderNavBar(props) {
 		const {onNavigateBack} = this.props;
-
-		return (
-			<NavigationBar.View
-				{...props}
-				onNavigateBack={onNavigateBack}
-			/>
-		);
+		return null
 	}
 
 	render() {
 		const {navigationState, onNavigateBack} = this.props;
-
 		return (
 			<StyleProvider style={theme}>
 				<CardStack

@@ -9,12 +9,11 @@ import firebase from 'firebase';
 // };
 
 const firebaseConfig = {
-	apiKey: "AIzaSyD_KASc1I0wW1hmNpsAfu9CrhimucSPxjQ",
-	authDomain: "gta-house.firebaseapp.com",
-	databaseURL: "https://gta-house.firebaseio.com",
-	projectId: "gta-house",
-	storageBucket: "gta-house.appspot.com",
-	messagingSenderId: "586484192857"
+	apiKey: "AIzaSyDFpgk_iHq07O63X8XiHNP0U5voa17zdBA",
+	authDomain: "upwork-notifications.firebaseapp.com",
+	databaseURL: "https://upwork-notifications.firebaseio.com",
+	storageBucket: "upwork-notifications.appspot.com",
+	messagingSenderId: "611608259932"
 };
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 

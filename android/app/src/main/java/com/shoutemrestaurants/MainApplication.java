@@ -4,6 +4,13 @@ import android.app.Application;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
+import com.auth0.lock.react.LockReactPackage;
+import io.fullstack.oauth.OAuthManagerPackage;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
+import io.fullstack.firestack.FirestackPackage;
+import com.reactnative.photoview.PhotoViewPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
+import com.horcrux.svg.SvgPackage;
 import cl.json.RNSharePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactInstanceManager;
@@ -27,6 +34,13 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new LockReactPackage(),
+            new OAuthManagerPackage(),
+            new RNGoogleSigninPackage(),
+            new FirestackPackage(),
+            new PhotoViewPackage(),
+            new LinearGradientPackage(),
+            new SvgPackage(),
             new RNSharePackage(),
             new VectorIconsPackage()
       );

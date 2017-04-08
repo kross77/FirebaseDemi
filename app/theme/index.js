@@ -11,6 +11,7 @@ const GALLERY_DOT_SIZE = 8;
 
 const Colors = {
 	DARK: '#333333',
+	GREEN: '#2D8040',
 	DARKER: '#222222',
 	DARK_DISABLE: '#707070',
 	LIGHT_GRAY: '#f2f2f2',
@@ -118,6 +119,11 @@ const theme = {
 		fontWeight: '500',
 	},
 
+	blackCenter: {
+		color: 'black',
+		textAlign: 'center',
+	},
+
 	italicTextStyle: {
 		fontStyle: 'italic',
 	},
@@ -140,12 +146,79 @@ const theme = {
 	'shoutem.ui.Text': {
 		[INCLUDE]: ['commonVariants', 'defaultFont', 'guttersMargin'],
 
+		'.green': {
+			color: Colors.GREEN,
+		},
+
+		'.avatar-title': {
+			color: Colors.DARK,
+			textAlign: 'center',
+			[INCLUDE]: ['boldTextStyle'],
+			fontSize: 12,
+		},
+
+		'.avatar-profession': {
+			color: Colors.DARK,
+			textAlign: 'center',
+			[INCLUDE]: ['italicTextStyle'],
+			fontSize: 9,
+			fontWeight: '100',
+		},
+
+		'.avatar-title-big': {
+			color: Colors.DARK,
+			textAlign: 'center',
+			[INCLUDE]: ['boldTextStyle'],
+			fontSize: 18,
+		},
+
+		'.avatar-profession-big': {
+			color: Colors.DARK,
+			textAlign: 'center',
+			[INCLUDE]: ['italicTextStyle'],
+			fontSize: 11,
+			fontWeight: '100',
+		},
+
+		'.avatar-phone-big': {
+			color: Colors.DARK,
+			textAlign: 'center',
+			[INCLUDE]: ['italicTextStyle'],
+			paddingTop: 10,
+			fontSize: 26,
+			fontWeight: '100',
+		},
+
+		'.ref-title': {
+			color: Colors.DARK,
+			textAlign: 'center',
+			[INCLUDE]: ['italicTextStyle'],
+			fontSize: 12,
+			fontWeight: '100',
+		},
+
+		'.ref-value': {
+			color: Colors.DARK,
+			textAlign: 'center',
+			[INCLUDE]: ['boldTextStyle'],
+			[INCLUDE]: ['italicTextStyle'],
+			fontSize: 14,
+			fontWeight: '500',
+
+		},
+
+
+
 		'.line-through': {
 			textDecorationLine: 'line-through',
 		},
 
 		'.h-center': {
 			textAlign: 'center',
+		},
+
+		'.bottom-space': {
+			paddingBottom: 20,
 		},
 
 		'.bright': {
@@ -223,6 +296,26 @@ const theme = {
 			borderWidth: 0,
 			resizeMode: 'cover',
 		},
+
+		'.phone-avatar': {
+			width: 54,
+			height: 54,
+			borderRadius: 27,
+			borderWidth: 1,
+			borderColor: Colors.LIGHT_GRAY,
+			resizeMode: 'cover',
+		},
+
+		'.phone-avatar-big': {
+			width: 120,
+			height: 120,
+			borderRadius: 60,
+			borderWidth: 1,
+			borderColor: Colors.LIGHT_GRAY,
+			resizeMode: 'cover',
+
+		},
+
 
 		'.medium': {
 			width: 145,
@@ -410,6 +503,13 @@ const theme = {
 		'.space-between': {
 			justifyContent: 'space-between',
 		},
+
+		'.phone-contact': {
+			width: 115,
+			height: 79,
+			justifyContent: 'center',
+			alignItems: 'center',
+		}
 	},
 
 	'shoutem.ui.Screen': {
@@ -695,6 +795,33 @@ const theme = {
 			[INCLUDE]: ['clearButton'],
 		},
 
+		'.green': {
+			'shoutem.ui.Icon': {
+				color: Colors.LIGHT,
+			},
+
+			'shoutem.ui.Text': {
+				color: Colors.LIGHT,
+			},
+
+			backgroundColor: Colors.GREEN,
+			borderColor: Colors.GREEN,
+		},
+
+		'.green-disable': {
+			'shoutem.ui.Icon': {
+				color: Colors.LIGHT,
+			},
+
+			'shoutem.ui.Text': {
+				color: Colors.LIGHT_GRAY,
+			},
+
+			backgroundColor: Colors.DARK_DISABLE,
+			borderColor: Colors.DARK_DISABLE,
+		},
+
+
 		'.dark': {
 			'shoutem.ui.Icon': {
 				color: Colors.LIGHT,
@@ -707,6 +834,8 @@ const theme = {
 			backgroundColor: Colors.DARKER,
 			borderColor: Colors.DARKER,
 		},
+
+
 		'.dark-disable': {
 			'shoutem.ui.Icon': {
 				color: Colors.LIGHT,
@@ -942,7 +1071,7 @@ const theme = {
 		justifyContent: 'space-between',
 		paddingRight: SMALL_GUTTER,
 		paddingTop: SMALL_GUTTER,
-		backgroundColor: Colors.BACKGROUND,
+		backgroundColor: 'transparent',
 	},
 
 	//
@@ -965,7 +1094,11 @@ const theme = {
 			},
 		},
 		container: {
-			backgroundColor: 'transparent',
+
+			backgroundGradient: {
+				colors: ['rgba(0, 0, 0, 0.0)', 'rgba(0, 0, 0, 0.6)'],
+				locations: [0.02, 1.0],
+			},
 			borderBottomColor: 'transparent',
 		},
 	},
