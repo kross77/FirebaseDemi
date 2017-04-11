@@ -4,6 +4,8 @@ import {Tile, Button, Overlay, TouchableOpacity, ScrollView, Screen, Divider, Te
 import {connect} from "react-redux";
 import {navigatePush} from "../../redux";
 import Logo from "../elements/Logo";
+import GoogleOAuth from "./GoogleOAuth";
+import AuthListener from "../../auth/AuthListener";
 
 
 class Login extends Component {
@@ -31,6 +33,18 @@ class Login extends Component {
 		};
 	}
 
+	componentDidMount() {
+		Linking.addEventListener('url', this._handleOpenURL);
+	}
+
+	componentWillUnmount() {
+		Linking.removeEventListener('url', this._handleOpenURL);
+	}
+
+	_handleOpenURL(event) {
+		console.log('_handleOpenURL', {url: event.url});
+	}
+
 
 	render() {
 		const {addSelectCityView} = this.props;
@@ -39,8 +53,7 @@ class Login extends Component {
 				<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}} source={require('./../../../assets/bg.png')}>
 					<View>
 						<Logo />
-						{this.renderButton('Facebook', ()=> { console.log(addSelectCityView); addSelectCityView() })}
-						{this.renderButton('Google', addSelectCityView)}
+						<AuthListener />
 					</View>
 
 				</View>

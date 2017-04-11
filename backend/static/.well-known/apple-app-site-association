@@ -1,0 +1,15 @@
+{
+"webcredentials": {
+       "apps": [    "5R2RM4B4UP.by.kross77.cesar.gtahouse",
+                    "5R2RM4B4UP.by.kross77.cesar.gtahouse" ]
+    },
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "5R2RM4B4UP.by.kross77.cesar.gtahouse",
+                "paths": [ "*" ]
+            }
+        ]
+    }
+}
