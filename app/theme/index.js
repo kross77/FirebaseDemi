@@ -808,6 +808,10 @@ const theme = {
 			borderColor: Colors.GREEN,
 		},
 
+		'.verticalMargin': {
+			marginVertical: 10,
+		},
+
 		'.green-disable': {
 			'shoutem.ui.Icon': {
 				color: Colors.LIGHT,

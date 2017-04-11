@@ -21,6 +21,9 @@ export default class FacebookOAuth extends Component {
 			.catch(() => {
 				this.setState({loading: false})
 			})
+			.then(() => {
+				this.checkToken();
+			})
 	}
 
 	componentWillReceiveProps(newProps) {
@@ -41,30 +44,35 @@ export default class FacebookOAuth extends Component {
 		}
 	};
 
-	componentWillUpdate(){
-		let {token, loading} = this.state;
-		if(token && loading){
-			this.checkToken();
-		}
-	}
-
 	checkToken = async () => {
 		let {token} = this.state;
-		// console.log('check token ',{ token });
-		let url = "https://graph.facebook.com/me/?access_token="+token+"&fields=email,name";
-		console.log('checkToken -> ', {url});
-		let response = await fetch(url);
+		if(token){
+			// console.log('check token ',{ token });
+			let url = "https://graph.facebook.com/me/?access_token="+token+"&fields=email,name";
+			console.log('checkToken -> ', {url});
+			let response = await fetch(url);
 
-		await setTimeout(()=> null, 0);
-		let userData = await response.json();
-		console.log({userData});
-		//this.props.onUserData(userData);
-		this.setState({loading: false, auth: true})
+			await setTimeout(()=> null, 0);
+			let userData = await response.json();
+			this.props.onAuth(userData);
+			this.setState({loading: false, auth: true})
+		}else{
+			this.setState({loading: false, auth: false})
+		}
+
 	};
 
 	authorize = () => {
 		let {appId, redirectURI} = this.props;
 		openLink(`https://www.facebook.com/v2.8/dialog/oauth?client_id=${appId}&redirect_uri=${redirectURI}`)
+	};
+
+	logout = () => {
+		let {onLogout} = this.props;
+		let {tokenKey} = this.state;
+		storage.remove(tokenKey);
+		onLogout();
+		this.setState({auth: false})
 	};
 
 	tokenRequest = async(code) => {
@@ -81,18 +89,19 @@ export default class FacebookOAuth extends Component {
 		if(access_token){
 			storage.write(tokenKey, access_token);
 			console.log('storage wrote', {tokenKey, access_token});
-			this.setState({token: access_token})
+			this.setState({token: access_token});
+			this.checkToken();
 		}else{
 			console.log('response error', {json});
 		}
 	};
 
 	render() {
-		console.log('render', this.state);
+		let {auth, loading} = this.state;
 		return (
 			<View>
-				<Button onPress={this.authorize}>
-					<Text>FACEBOOK</Text>
+				<Button styleName="green verticalMargin" onPress={auth ? this.logout : this.authorize}>
+					<Text>{loading ? 'Loading...' : (auth ? 'LOGOUT FROM FACEBOOK' : 'FACEBOOK')}</Text>
 				</Button>
 			</View>
 		)
@@ -104,4 +113,6 @@ FacebookOAuth.propTypes = {
 	linkingURL: PropTypes.string,
 	appSecret: PropTypes.string.isRequired,
 	redirectURI: PropTypes.string.isRequired,
+	onAuth: PropTypes.func.isRequired,
+	onLogout: PropTypes.func.isRequired,
 };

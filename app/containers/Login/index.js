@@ -53,7 +53,8 @@ class Login extends Component {
 				<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}} source={require('./../../../assets/bg.png')}>
 					<View>
 						<Logo />
-						<AuthListener />
+						<Title styleName="green" style={{marginTop: 30, marginBottom: 10}}>Please introduce youself:</Title>
+						<AuthListener onContinue={this.props.addSelectCityView} />
 					</View>
 
 				</View>

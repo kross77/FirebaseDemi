@@ -89,7 +89,7 @@ export default class InstagramOAuth extends Component {
 		let {loading, auth } = this.state;
 		return (
 			<View>
-				<Button onPress={auth ? this.logout : this.authorize}>
+				<Button styleName="green verticalMargin" onPress={auth ? this.logout : this.authorize}>
 					<Text>{loading ? 'Loading...' : auth ? 'LOGOUT INSTAGRAM' : 'INSTAGRAM'}</Text>
 				</Button>
 			</View>

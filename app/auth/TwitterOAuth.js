@@ -133,7 +133,7 @@ export default class FacebookOAuth extends Component {
 		console.log('render', this.state);
 		return (
 			<View>
-				<Button onPress={this.authorize}>
+				<Button styleName="green verticalMargin" onPress={this.authorize}>
 					<Text>TWITTER</Text>
 				</Button>
 			</View>

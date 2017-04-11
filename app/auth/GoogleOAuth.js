@@ -56,20 +56,25 @@ export default class GoogleOAuth extends Component {
 
 	checkToken = async () => {
 		let {token} = this.state;
-		let {onAuth} = this.props;
-		// console.log('check token ',{ token });
-		let url = "https://www.googleapis.com/auth/userinfo.profile?access_token="+token;
-		console.log('checkToken -> ', {url});
-		let response = await fetch(url);
+		if(token){
+			let {onAuth} = this.props;
+			// console.log('check token ',{ token });
+			let url = "https://www.googleapis.com/auth/userinfo.profile?access_token="+token;
+			console.log('checkToken -> ', {url});
+			let response = await fetch(url);
 
-		await setTimeout(()=> null, 0);
+			await setTimeout(()=> null, 0);
 
-		let userData = await response.text();
-		console.log({userData});
-		if(onAuth){
-			onAuth(userData);
+			let userData = await response.text();
+			console.log({userData});
+			if(onAuth){
+				onAuth(userData);
+			}
+			this.setState({loading: false, auth: true})
+		}else{
+			this.setState({loading: false, auth: false})
 		}
-		this.setState({loading: false, auth: true})
+
 	};
 
 	authorize = () => {
@@ -79,8 +84,11 @@ export default class GoogleOAuth extends Component {
 
 	logout = () => {
 		let {tokenKey} = this.state;
+		let {onLogout} = this.props;
 		storage.remove(tokenKey);
+		onLogout();
 		this.setState({auth: false});
+
 	};
 
 
@@ -89,7 +97,7 @@ export default class GoogleOAuth extends Component {
 		let {loading, auth } = this.state;
 		return (
 			<View>
-				<Button onPress={auth ? this.logout : this.authorize}>
+				<Button styleName="green verticalMargin" onPress={auth ? this.logout : this.authorize}>
 					<Text>{loading ? 'Loading...' : auth ? 'LOGOUT GOOGLE' : 'GOOGLE'}</Text>
 				</Button>
 			</View>
@@ -103,5 +111,6 @@ GoogleOAuth.propTypes = {
 	scope: PropTypes.string,
 	appSecret: PropTypes.string.isRequired,
 	redirectURI: PropTypes.string.isRequired,
-	onAuth: PropTypes.string.isRequired,
+	onAuth: PropTypes.func.isRequired,
+	onLogout: PropTypes.func.isRequired,
 };
