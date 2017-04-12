@@ -4,7 +4,6 @@ import {Tile, Button, Overlay, TouchableOpacity, ScrollView, Screen, Divider, Te
 import {connect} from "react-redux";
 import {navigatePush} from "../../redux";
 import Logo from "../elements/Logo";
-import GoogleOAuth from "./GoogleOAuth";
 import AuthListener from "../../auth/AuthListener";
 
 
@@ -32,6 +31,8 @@ class Login extends Component {
 			}
 		};
 	}
+
+
 
 	componentDidMount() {
 		Linking.addEventListener('url', this._handleOpenURL);

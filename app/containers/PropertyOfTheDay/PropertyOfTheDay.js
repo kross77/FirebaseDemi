@@ -51,8 +51,34 @@ class PropertyOfTheDay extends Component {
 	}
 
 
+	componentWillMount(){
+		console.log('componentWillMount', this.props);
+	}
+
+	renderDescription(){
+		let{property} = this.props;
+		if(property.description){
+			return(
+				<View style={{ flex: 1}}>
+					<View style={{alignItems: 'center'}}>
+						<Title>Description</Title>
+					</View>
+
+					<View styleName="fullWidth" style={{padding: 20, paddingBottom: 50, flex: 1, alignItems: 'flex-start'}}>
+						<Text style={{color: 'black', fontSize: 13, fontStyle: 'italic'}}>{property.description}</Text>
+					</View>
+
+				</View>
+			)
+		}
+		return null;
+	}
+
+
 	render() {
 		const {header, loading} = this.state;
+		const { property } = this.props;
+		const { images } = property;
 		return (
 			<Screen>
 				<Header
@@ -65,23 +91,33 @@ class PropertyOfTheDay extends Component {
 					<ScrollView >
 						<View style={{flex: 1, alignItems: 'center'}}>
 							<Title
-								style={{width: 375 * 0.8, textAlign: 'center', fontStyle: 'italic', lineHeight: 20, paddingTop: 10, paddingBottom: 10}}>7 BEDROOM DETACHED HOUSE FOR SALE</Title>
-						</View>
-						<View style={{flex: 1, alignItems: 'center'}}>
-							<ImageBlock/>
+								style={{width: 375 * 0.8, textAlign: 'center', fontStyle: 'italic', lineHeight: 20, paddingTop: 10, paddingBottom: 10}}>{property.name}</Title>
 						</View>
 
-						<Properties />
-						<Features />
+
+
+						{images ? <View style={{flex: 1, alignItems: 'center'}}>
+										<ImageBlock images={images}/>
+									</View> : null }
+						{property.items ? <Properties items={property.items} /> : null }
+						{property.features ? <Features points={property.features} /> : null }
+						{
+							this.renderDescription()
+						}
+
 					</ScrollView>
-
 				</View>
+
 				<BottomBar />
 
 			</Screen>
 
 		);
 	}
+}
+
+PropertyOfTheDay.propTypes = {
+	property: Object,
 }
 
 

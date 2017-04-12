@@ -32,7 +32,7 @@ export default class GoogleOAuth extends Component {
 		console.log({linkingURL});
 		let {tokenKey} = this.state;
 		if (linkingURL.search("google") != -1) {
-			let newCode = linkingURL.replace('insta334://google/#%23', '');
+			let newCode = linkingURL.replace('insta334://google/#', '');
 			let urlVariables = getURLVariables(newCode);
 			let {access_token} = urlVariables;
 			console.log({access_token});

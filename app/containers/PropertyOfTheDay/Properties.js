@@ -40,7 +40,7 @@ class Properties extends Component {
 			return (
 				<TouchableOpacity style={{paddingLeft: 2, paddingRight: 2, paddingTop: 2, paddingBottom:2}} key={id}>
 					<View style={{flex: 1, alignItems: 'center', justifyContent: 'center', paddingBottom: 30}}>
-						<Text style={{fontSize: 10}}>{item.prop}</Text>
+						<Text style={{fontSize: 10}}>{item.property}</Text>
 						<Subtitle style={{fontWeight: '500'}}>{item.value}</Subtitle>
 					</View>
 
@@ -83,12 +83,12 @@ Properties.propTypes = {
 
 Properties.defaultProps = {
 	items: [
-		{prop: 'Price', value: '120 000$'},
-		{prop: 'Basement Type', value: 'Finished'},
-		{prop: 'Storeys', value: 'Two levels'},
-		{prop: 'Land Size', value: '112 x 220 feet'},
-		{prop: 'Parking Type', value: 'Garage'},
-		{prop: 'Main Intersection', value: 'Lawrence & Dupont'}
+		{property: 'Price', value: '120 000$'},
+		{property: 'Basement Type', value: 'Finished'},
+		{property: 'Storeys', value: 'Two levels'},
+		{property: 'Land Size', value: '112 x 220 feet'},
+		{property: 'Parking Type', value: 'Garage'},
+		{property: 'Main Intersection', value: 'Lawrence & Dupont'}
 	]
 };
 

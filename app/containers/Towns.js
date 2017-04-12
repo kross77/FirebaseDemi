@@ -27,43 +27,23 @@ class Towns extends Component {
 		super(props);
 		this.renderRow = this.renderRow.bind(this);
 		// this.jobs = jobs();
+
 		this.state = {
-			listData: [
-				{
-					"name": "Toronto",
-					"address": "185 Sutter St, San Francisco, CA 94109",
-					"image": this.props.source,
-				},{
-					"name": "NORTH YORK",
-					"address": "185 Sutter St, San Francisco, CA 94109",
-					"image": this.props.source,
-				},{
-					"name": "PEEL",
-					"address": "185 Sutter St, San Francisco, CA 94109",
-					"image": this.props.source,
-				},{
-					"name": "MARKHAM",
-					"address": "185 Sutter St, San Francisco, CA 94109",
-					"image": this.props.source,
-				},{
-					"name": "RICHMOND HILL",
-					"address": "185 Sutter St, San Francisco, CA 94109",
-					"image": this.props.source,
-				},{
-					"name": "VAUGHAN",
-					"address": "185 Sutter St, San Francisco, CA 94109",
-					"image": this.props.source,
-				},{
-					"name": "NORTH YORK",
-					"address": "185 Sutter St, San Francisco, CA 94109",
-					"image": this.props.source,
-				},{
-					"name": "NORTH YORK",
-					"address": "185 Sutter St, San Francisco, CA 94109",
-					"image": this.props.source,
-				},
-			],
+			listData: [],
 		}
+
+	}
+
+
+	componentWillReceiveProps(newProps){
+		let {towns} = newProps;
+		if(towns){
+			console.log('componentWillReceiveProps', {towns}, newProps);
+			this.state = {
+				listData: towns,
+			}
+		}
+
 	}
 
 	renderRow(rowData, sectionId, index) {
@@ -115,6 +95,7 @@ export default Towns
 Towns.propTypes = {
 	onItemPress: PropTypes.func,
 	source: PropTypes.any,
+	towns: PropTypes.array,
 };
 
 Towns.defaultProps = {

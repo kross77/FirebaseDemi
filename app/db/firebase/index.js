@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import * as firebase from "firebase";
 
 // const firebaseConfig = {
 // 	apiKey: "AIzaSyD28EphbGb2fj02EnVWBUy2U8xNDIDYZPg",
@@ -16,9 +16,9 @@ const firebaseConfig = {
 	storageBucket: "gta-house.appspot.com",
 	messagingSenderId: "586484192857"
 };
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+export const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-export const categories =
+export const root =
 	() => (firebaseApp.database().ref());
 
 export const jobs =

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {StyleSheet, Image, View} from "react-native";
 import {Tile, Overlay, TouchableOpacity, ScrollView, Screen, Divider, Text, Subtitle} from "@shoutem/ui";
 import {ScrollDriver} from "@shoutem/animation";
-import {jobs} from "../db/firebase";
+import {firebaseApp} from "../db/firebase";
 import {connect} from "react-redux";
 import moment from "moment";
 import {navigatePush} from "../redux";
@@ -43,6 +43,62 @@ class SelectCity extends Component {
 		}
 	}
 
+	componentDidMount() {
+		let town = firebaseApp.database().ref('/towns');
+		let properties = firebaseApp.database().ref('/properties');
+		this.parseTowns(town);
+		this.parseProperties(properties);
+	}
+
+	parseTowns(itemsRef) {
+		console.log('parseTowns', itemsRef);
+		itemsRef.on('value', (snap) => {
+			setTimeout(()=> null, 0);
+			// get children as an array
+			let items = [];
+			snap.forEach((child) => {
+				const {name, image, location, propertyId} = child.val();
+				items.push({
+					name,
+					image,
+					location,
+					propertyId,
+					key: child.key
+				});
+			});
+			console.log('parseTowns on value', items);
+			this.setState({
+				towns: items,
+			});
+
+		});
+	}
+
+	parseProperties(itemsRef) {
+		console.log('parseProperties', itemsRef);
+		itemsRef.on('value', (snap) => {
+			setTimeout(()=> null, 0);
+			// get children as an array
+			let properties = {};
+			snap.forEach((child) => {
+				const {name, description, items, features, images} = child.val();
+				properties[child.key] = {
+					name,
+					images,
+					features,
+					description,
+					items,
+					key: child.key
+				};
+			});
+			console.log('parseProperties on value', properties);
+			this.setState({
+				properties,
+			});
+
+		});
+	}
+
 
 	renderHeader = (header) => (
 		<Image style={{ height: 71, justifyContent: 'center', alignItems: 'center'}} source={require('./../../assets/header-bg.png')}>
@@ -61,7 +117,9 @@ class SelectCity extends Component {
 					<View style={{flex: 1}}>
 						<ScrollView >
 							<Logo />
-							<Towns onItemPress={this.props.addPropertyOfTheDayView}/>
+							<Towns towns={this.state.towns} onItemPress={(item) => {
+								this.props.addPropertyOfTheDayView(item, this.state.properties[item.propertyId])
+							}}/>
 						</ScrollView>
 					</View>
 				</Screen>
@@ -72,11 +130,11 @@ class SelectCity extends Component {
 
 
 const mapDispatchToProps = (dispatch) => ({
-	addPropertyOfTheDayView: (item) => {
+	addPropertyOfTheDayView: (item, property) => {
 		dispatch(navigatePush({
 			key: 'PropertyOfTheDay',
 			item: item.name,
-		}, {item}));
+		}, {property}));
 	},
 	onAddButtonPress: () => {
 		dispatch(navigatePush({
