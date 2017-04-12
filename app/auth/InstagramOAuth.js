@@ -12,7 +12,7 @@ export default class InstagramOAuth extends Component {
 			loading: true,
 			code: null,
 			auth: false,
-			tokenKey: 'googleToken',
+			tokenKey: 'instagramToken',
 			token: null,
 		}
 	}
@@ -31,8 +31,8 @@ export default class InstagramOAuth extends Component {
 		let {linkingURL} = newProps;
 		console.log({linkingURL});
 		let {tokenKey} = this.state;
-		if (linkingURL.search("google") != -1) {
-			let newCode = linkingURL.replace('insta334://instagram/#%23', '');
+		if (linkingURL.search("instagram") != -1) {
+			let newCode = linkingURL.replace('insta334://instagram/#', '');
 			let urlVariables = getURLVariables(newCode);
 			let {access_token} = urlVariables;
 			console.log({access_token});
@@ -56,31 +56,40 @@ export default class InstagramOAuth extends Component {
 
 	checkToken = async () => {
 		let {token} = this.state;
-		let {onAuth} = this.props;
-		// console.log('check token ',{ token });
-		let url = "https://www.googleapis.com/auth/userinfo.profile?access_token="+token;
-		console.log('checkToken -> ', {url});
-		let response = await fetch(url);
+		if(token){
+			let {onAuth} = this.props;
+			// console.log('check token ',{ token });
+			let url = "https://api.instagram.com/v1/users/self/?access_token="+token;
+			console.log('checkToken -> ', {url});
+			let response = await fetch(url);
 
-		await setTimeout(()=> null, 0);
+			await setTimeout(()=> null, 0);
 
-		let userData = await response.text();
-		console.log({userData});
-		if(onAuth){
-			onAuth(userData);
+			let userData = await response.text();
+			console.log({userData});
+			if(onAuth){
+				onAuth(userData);
+			}
+			this.setState({loading: false, auth: true})
+		}else{
+			this.setState({loading: false, auth: false})
 		}
-		this.setState({loading: false, auth: true})
+
 	};
 
 	authorize = () => {
 		let {appId, redirectURI, scope} = this.props;
-		openLink(`https://api.instagram.com/oauth/authorize/??client_id=${appId}&redirect_uri=${redirectURI}&response_type=token`)
+		openLink(`https://api.instagram.com/oauth/authorize/?client_id=${appId}&redirect_uri=${redirectURI}&response_type=token`)
 	};
 
 	logout = () => {
 		let {tokenKey} = this.state;
+		let {onLogout} = this.props;
 		storage.remove(tokenKey);
 		this.setState({auth: false});
+		if(onLogout){
+			onLogout();
+		}
 	};
 
 
@@ -103,5 +112,6 @@ InstagramOAuth.propTypes = {
 	scope: PropTypes.string,
 	appSecret: PropTypes.string.isRequired,
 	redirectURI: PropTypes.string.isRequired,
-	onAuth: PropTypes.string.isRequired,
+	onAuth: PropTypes.func.isRequired,
+	onLogout: PropTypes.func.isRequired,
 };

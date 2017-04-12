@@ -73,11 +73,13 @@ export default class AuthListener extends Component{
 					onLogout={() => this.onLogout('google')}
 					linkingURL={this.state.linkingURL} />
 
-				{/*<InstagramOAuth*/}
-					{/*appId='86da33f311de49ea869f559ebd6794b5'*/}
-					{/*appSecret='393be0e0f0944fa5ac384f23248a6caa'*/}
-					{/*redirectURI='https://gta-house.firebaseapp.com/instagram.html'*/}
-					{/*linkingURL={this.state.linkingURL} />*/}
+				<InstagramOAuth
+					appId='86da33f311de49ea869f559ebd6794b5'
+					appSecret='393be0e0f0944fa5ac384f23248a6caa'
+					redirectURI='https://gta-house.firebaseapp.com/instagram.html'
+					onAuth={() => this.onAuth('instagram')}
+					onLogout={() => this.onLogout('instagram')}
+					linkingURL={this.state.linkingURL} />
 
 				{/*<TwitterOAuth*/}
 					{/*appId='aYPRu6NEsSov1ndNNSEFdF6JD'*/}
