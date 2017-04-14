@@ -1,0 +1,410 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.5.0/bin/node /Users/ales/.npm-packages/bin/firebase deploy
+[debug] CLI Version:  3.6.0
+[debug] Platform:     darwin
+[debug] Node Version: v7.5.0
+[debug] Time:         Fri Apr 14 2017 17:08:41 GMT+0300 (+03)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/oBe6oYd7d3tmebiVBUmEp4-yLMWLvbCcZnGtNFfAkCkjtEUl2wliFjrsisb-wtgL',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Fri Apr 14 2017 17:08:41 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/gta-house  
+ Fri Apr 14 2017 17:08:42 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/gta-house/tokens  
+ Fri Apr 14 2017 17:08:44 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'gta-house'...
+[info] 
+[info] i  deploying database, functions, hosting
+[info] ✔  database: rules ready to deploy.
+[debug] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "firebase-admin": "^4.1.2",
+    "firebase-functions": "^0.5"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/gta-house?view=CONSUMER_VIEW  
+ Fri Apr 14 2017 17:08:47 GMT+0300 (+03)
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/gta-house?view=CONSUMER_VIEW  
+ Fri Apr 14 2017 17:08:47 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  runtimeconfig: all necessary APIs are enabled
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/gta-house  
+ Fri Apr 14 2017 17:08:49 GMT+0300 (+03)
+[debug] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/gta-house/apiKeys  
+ Fri Apr 14 2017 17:08:49 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/gta-house/configs  
+ Fri Apr 14 2017 17:08:53 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] > [functions] runtime config materialized as: {
+  "firebase": {
+    "databaseURL": "https://gta-house.firebaseio.com",
+    "storageBucket": "gta-house.appspot.com",
+    "apiKey": "AIzaSyB8DxVAcdS-GEXl67CaSlSh9V4IetFh9dw",
+    "authDomain": "gta-house.firebaseapp.com"
+  }
+}
+[debug] > [functions] parsed triggers: []
+[info] i  hosting: preparing y directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/gta-house/uploads/-Khgmt-t5c5uE6245u_f?fileCount=1064&message=  
+ Fri Apr 14 2017 17:08:57 GMT+0300 (+03)
+[debug] Error: connect ETIMEDOUT 23.251.151.130:443
+    at Object.exports._errnoException (util.js:1023:11)
+    at exports._exceptionWithHostPort (util.js:1046:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1090:14)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 23.251.151.130:443
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.5.0/bin/node /Users/ales/.npm-packages/bin/firebase deploy
+[debug] CLI Version:  3.6.0
+[debug] Platform:     darwin
+[debug] Node Version: v7.5.0
+[debug] Time:         Fri Apr 14 2017 17:10:19 GMT+0300 (+03)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/gta-house  
+ Fri Apr 14 2017 17:10:19 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/gta-house/tokens  
+ Fri Apr 14 2017 17:10:20 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'gta-house'...
+[info] 
+[info] i  deploying database, functions, hosting
+[info] ✔  database: rules ready to deploy.
+[debug] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "firebase-admin": "^4.1.2",
+    "firebase-functions": "^0.5"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/gta-house?view=CONSUMER_VIEW  
+ Fri Apr 14 2017 17:10:24 GMT+0300 (+03)
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/gta-house?view=CONSUMER_VIEW  
+ Fri Apr 14 2017 17:10:24 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  runtimeconfig: all necessary APIs are enabled
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/gta-house  
+ Fri Apr 14 2017 17:10:25 GMT+0300 (+03)
+[debug] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/gta-house/apiKeys  
+ Fri Apr 14 2017 17:10:25 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/gta-house/configs  
+ Fri Apr 14 2017 17:10:28 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] > [functions] runtime config materialized as: {
+  "firebase": {
+    "databaseURL": "https://gta-house.firebaseio.com",
+    "storageBucket": "gta-house.appspot.com",
+    "apiKey": "AIzaSyB8DxVAcdS-GEXl67CaSlSh9V4IetFh9dw",
+    "authDomain": "gta-house.firebaseapp.com"
+  }
+}
+[debug] > [functions] parsed triggers: []
+[info] i  hosting: preparing y directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/gta-house/uploads/-KhgnF9CldnSt91-OImQ?fileCount=1064&message=  
+ Fri Apr 14 2017 17:10:32 GMT+0300 (+03)
+[debug] Error: connect ETIMEDOUT 23.251.151.130:443
+    at Object.exports._errnoException (util.js:1023:11)
+    at exports._exceptionWithHostPort (util.js:1046:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1090:14)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 23.251.151.130:443
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.5.0/bin/node /Users/ales/.npm-packages/bin/firebase deploy
+[debug] CLI Version:  3.6.1
+[debug] Platform:     darwin
+[debug] Node Version: v7.5.0
+[debug] Time:         Fri Apr 14 2017 17:15:23 GMT+0300 (+03)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/gta-house  
+ Fri Apr 14 2017 17:15:23 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/gta-house/tokens  
+ Fri Apr 14 2017 17:15:25 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'gta-house'...
+[info] 
+[info] i  deploying database, functions, hosting
+[info] ✔  database: rules ready to deploy.
+[debug] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "firebase-admin": "^4.1.2",
+    "firebase-functions": "^0.5"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/gta-house?view=CONSUMER_VIEW  
+ Fri Apr 14 2017 17:15:58 GMT+0300 (+03)
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/gta-house?view=CONSUMER_VIEW  
+ Fri Apr 14 2017 17:15:58 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  runtimeconfig: all necessary APIs are enabled
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/gta-house  
+ Fri Apr 14 2017 17:15:59 GMT+0300 (+03)
+[debug] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/gta-house/apiKeys  
+ Fri Apr 14 2017 17:15:59 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/gta-house/configs  
+ Fri Apr 14 2017 17:16:02 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] > [functions] runtime config materialized as: {
+  "firebase": {
+    "databaseURL": "https://gta-house.firebaseio.com",
+    "storageBucket": "gta-house.appspot.com",
+    "apiKey": "AIzaSyB8DxVAcdS-GEXl67CaSlSh9V4IetFh9dw",
+    "authDomain": "gta-house.firebaseapp.com"
+  }
+}
+[debug] > [functions] parsed triggers: []
+[info] i  hosting: preparing y directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/gta-house/uploads/-KhgoWiO9i21v971o-zT?fileCount=1064&message=  
+ Fri Apr 14 2017 17:16:05 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] [hosting] .tgz uploaded successfully, waiting for extraction
+[info] ✔  hosting: 1064 files uploaded successfully
+[info] i  starting release process (may take several minutes)...
+[debug] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1beta2/projects/gta-house/locations/us-central1/functions  
+ Fri Apr 14 2017 17:16:26 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1beta2/projects/gta-house/locations/us-central1/functions  
+ Fri Apr 14 2017 17:16:28 GMT+0300 (+03)
+[debug] [functions] failed to list functions for gta-house
+[debug] [functions] Server Error. connect ETIMEDOUT 172.217.16.170:443
+[debug] >>> HTTP REQUEST POST https://deploy.firebase.com/v1/projects/gta-house/releases { database: { rulesString: '{\n  "rules": {\n    ".read": "auth != null",\n    ".write": "auth != null"\n  }\n}' },
+  hosting: 
+   { public: 'y',
+     version: '-KhgoWiO9i21v971o-zT',
+     prefix: '-KhgoWiO9i21v971o-zT/',
+     manifest: [] } } 
+ Fri Apr 14 2017 17:17:44 GMT+0300 (+03)
+[debug] Error: connect ETIMEDOUT 23.251.151.130:443
+    at Object.exports._errnoException (util.js:1023:11)
+    at exports._exceptionWithHostPort (util.js:1046:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1090:14)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 23.251.151.130:443
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.5.0/bin/node /Users/ales/.npm-packages/bin/firebase deploy
+[debug] CLI Version:  3.6.1
+[debug] Platform:     darwin
+[debug] Node Version: v7.5.0
+[debug] Time:         Fri Apr 14 2017 17:19:23 GMT+0300 (+03)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/gta-house  
+ Fri Apr 14 2017 17:19:23 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/gta-house/tokens  
+ Fri Apr 14 2017 17:19:25 GMT+0300 (+03)
+[debug] Error: connect ETIMEDOUT 104.197.85.31:443
+    at Object.exports._errnoException (util.js:1023:11)
+    at exports._exceptionWithHostPort (util.js:1046:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1090:14)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 104.197.85.31:443
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.5.0/bin/node /Users/ales/.npm-packages/bin/firebase deploy
+[debug] CLI Version:  3.6.1
+[debug] Platform:     darwin
+[debug] Node Version: v7.5.0
+[debug] Time:         Fri Apr 14 2017 17:24:55 GMT+0300 (+03)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/gta-house  
+ Fri Apr 14 2017 17:24:55 GMT+0300 (+03)
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.5.0/bin/node /Users/ales/.npm-packages/bin/firebase deploy
+[debug] CLI Version:  3.6.1
+[debug] Platform:     darwin
+[debug] Node Version: v7.5.0
+[debug] Time:         Fri Apr 14 2017 17:25:32 GMT+0300 (+03)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/gta-house  
+ Fri Apr 14 2017 17:25:32 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/gta-house/tokens  
+ Fri Apr 14 2017 17:25:32 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'gta-house'...
+[info] 
+[info] i  deploying database, functions, hosting
+[info] ✔  database: rules ready to deploy.
+[debug] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "firebase-admin": "^4.1.2",
+    "firebase-functions": "^0.5"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/gta-house?view=CONSUMER_VIEW  
+ Fri Apr 14 2017 17:25:38 GMT+0300 (+03)
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/gta-house?view=CONSUMER_VIEW  
+ Fri Apr 14 2017 17:25:38 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  runtimeconfig: all necessary APIs are enabled
+[debug] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/gta-house  
+ Fri Apr 14 2017 17:25:41 GMT+0300 (+03)
+[debug] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/gta-house/apiKeys  
+ Fri Apr 14 2017 17:25:41 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/gta-house/configs  
+ Fri Apr 14 2017 17:25:44 GMT+0300 (+03)
+[debug] Error: connect ETIMEDOUT 172.217.21.202:443
+    at Object.exports._errnoException (util.js:1023:11)
+    at exports._exceptionWithHostPort (util.js:1046:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1090:14)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 172.217.21.202:443
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.5.0/bin/node /Users/ales/.npm-packages/bin/firebase deploy
+[debug] CLI Version:  3.6.1
+[debug] Platform:     darwin
+[debug] Node Version: v7.5.0
+[debug] Time:         Fri Apr 14 2017 17:27:07 GMT+0300 (+03)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/gta-house  
+ Fri Apr 14 2017 17:27:07 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/gta-house/tokens  
+ Fri Apr 14 2017 17:27:08 GMT+0300 (+03)
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.5.0/bin/node /Users/ales/.npm-packages/bin/firebase deploy --debug
+[debug] CLI Version:  3.6.1
+[debug] Platform:     darwin
+[debug] Node Version: v7.5.0
+[debug] Time:         Fri Apr 14 2017 17:28:52 GMT+0300 (+03)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/gta-house  
+ Fri Apr 14 2017 17:28:52 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/gta-house/tokens  
+ Fri Apr 14 2017 17:28:54 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'gta-house'...
+[info] 
+[info] i  deploying database, functions, hosting
+[info] ✔  database: rules ready to deploy.
+[debug] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "firebase-admin": "^4.1.2",
+    "firebase-functions": "^0.5"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/gta-house?view=CONSUMER_VIEW  
+ Fri Apr 14 2017 17:28:57 GMT+0300 (+03)
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/gta-house?view=CONSUMER_VIEW  
+ Fri Apr 14 2017 17:28:57 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  runtimeconfig: all necessary APIs are enabled
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/gta-house  
+ Fri Apr 14 2017 17:28:58 GMT+0300 (+03)
+[debug] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/gta-house/apiKeys  
+ Fri Apr 14 2017 17:28:58 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/gta-house/configs  
+ Fri Apr 14 2017 17:29:01 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] > [functions] runtime config materialized as: {
+  "firebase": {
+    "databaseURL": "https://gta-house.firebaseio.com",
+    "storageBucket": "gta-house.appspot.com",
+    "apiKey": "AIzaSyB8DxVAcdS-GEXl67CaSlSh9V4IetFh9dw",
+    "authDomain": "gta-house.firebaseapp.com"
+  }
+}
+[debug] > [functions] parsed triggers: []
+[info] i  hosting: preparing y directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/gta-house/uploads/-KhgrV4Ja_bh6vuvVx1m?fileCount=1064&message=  
+ Fri Apr 14 2017 17:29:05 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] [hosting] .tgz uploaded successfully, waiting for extraction
+[info] ✔  hosting: 1064 files uploaded successfully
+[info] i  starting release process (may take several minutes)...
+[debug] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1beta2/projects/gta-house/locations/us-central1/functions  
+ Fri Apr 14 2017 17:29:26 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1beta2/projects/gta-house/locations/us-central1/functions  
+ Fri Apr 14 2017 17:29:27 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST POST https://deploy.firebase.com/v1/projects/gta-house/releases { database: { rulesString: '{\n  "rules": {\n    ".read": "auth != null",\n    ".write": "auth != null"\n  }\n}' },
+  hosting: 
+   { public: 'y',
+     version: '-KhgrV4Ja_bh6vuvVx1m',
+     prefix: '-KhgrV4Ja_bh6vuvVx1m/',
+     manifest: [] } } 
+ Fri Apr 14 2017 17:29:27 GMT+0300 (+03)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] ✔  Deploy complete!
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/gta-house/overview
+[info] Hosting URL: https://gta-house.firebaseapp.com

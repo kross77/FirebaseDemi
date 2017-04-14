@@ -55,30 +55,37 @@ export default class InstagramOAuth extends Component {
 	};
 
 	checkToken = async () => {
-		let {token} = this.state;
-		if(token){
-			let {onAuth} = this.props;
-			// console.log('check token ',{ token });
-			let url = "https://api.instagram.com/v1/users/self/?access_token="+token;
-			console.log('checkToken -> ', {url});
-			let response = await fetch(url);
+		let {token, loading} = this.state;
+		if(loading){
+			if(token){
+				let {onAuth} = this.props;
+				// console.log('check token ',{ token });
+				let url = "https://api.instagram.com/v1/users/self/?access_token="+token;
+				console.log('checkToken -> ', {url});
+				let response = await fetch(url);
 
-			await setTimeout(()=> null, 0);
+				await setTimeout(()=> null, 0);
 
-			let userData = await response.text();
-			console.log({userData});
-			if(onAuth){
-				onAuth(userData);
+				let userData = await response.text();
+				console.log({userData});
+				if(onAuth){
+					onAuth(userData);
+				}
+				this.setState({loading: false, auth: true})
+			}else{
+				this.setState({loading: false, auth: false})
 			}
-			this.setState({loading: false, auth: true})
-		}else{
-			this.setState({loading: false, auth: false})
 		}
+
 
 	};
 
 	authorize = () => {
-		let {appId, redirectURI, scope} = this.props;
+		let {appId, redirectURI} = this.props;
+
+
+		this.setState({loading: true});
+
 		openLink(`https://api.instagram.com/oauth/authorize/?client_id=${appId}&redirect_uri=${redirectURI}&response_type=token`)
 	};
 

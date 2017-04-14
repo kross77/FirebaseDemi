@@ -46,8 +46,10 @@ class SelectCity extends Component {
 	componentDidMount() {
 		let town = firebaseApp.database().ref('/towns');
 		let properties = firebaseApp.database().ref('/properties');
+		let contacts = firebaseApp.database().ref('/contacts');
 		this.parseTowns(town);
 		this.parseProperties(properties);
+		this.parseContacts(contacts);
 	}
 
 	parseTowns(itemsRef) {
@@ -99,6 +101,30 @@ class SelectCity extends Component {
 		});
 	}
 
+	parseContacts(itemsRef) {
+		console.log('parseContacts', itemsRef);
+		itemsRef.on('value', (snap) => {
+			setTimeout(()=> null, 0);
+			// get children as an array
+			let contacts = [];
+			snap.forEach((child) => {
+				const {name, phone, title, image} = child.val();
+				contacts.push({
+					name,
+					image,
+					phone,
+					title,
+					key: child.key
+				});
+			});
+			console.log('parseContacts on value', contacts);
+			this.setState({
+				contacts,
+			});
+
+		});
+	}
+
 
 	renderHeader = (header) => (
 		<Image style={{ height: 71, justifyContent: 'center', alignItems: 'center'}} source={require('./../../assets/header-bg.png')}>
@@ -107,7 +133,7 @@ class SelectCity extends Component {
 	);
 
 	render() {
-		const {header, loading} = this.state;
+		const {header, loading, contacts} = this.state;
 		return (
 				<Screen>
 					<Header
@@ -118,7 +144,7 @@ class SelectCity extends Component {
 						<ScrollView >
 							<Logo />
 							<Towns towns={this.state.towns} onItemPress={(item) => {
-								this.props.addPropertyOfTheDayView(item, this.state.properties[item.propertyId])
+								this.props.addPropertyOfTheDayView(item, this.state.properties[item.propertyId], contacts)
 							}}/>
 						</ScrollView>
 					</View>
@@ -130,11 +156,11 @@ class SelectCity extends Component {
 
 
 const mapDispatchToProps = (dispatch) => ({
-	addPropertyOfTheDayView: (item, property) => {
+	addPropertyOfTheDayView: (item, property, contacts) => {
 		dispatch(navigatePush({
 			key: 'PropertyOfTheDay',
 			item: item.name,
-		}, {property}));
+		}, {property, contacts}));
 	},
 	onAddButtonPress: () => {
 		dispatch(navigatePush({

@@ -55,12 +55,12 @@ const Viewer = props =>
 	{
 		props.imgList.map((item, i) => <View key={i} style={styles.slide}>
 			<View styleName="horizontal">
-				<Image style={{marginTop: 40}} styleName="phone-avatar-big" source={{url: item.avatar}} />
+				<Image style={{marginTop: 40}} styleName="phone-avatar-big" source={{url: item.image.uri}} />
 				<Image style={{marginLeft: 20}} source={require('./../../../../assets/HomeLife.png')} />
 			</View>
 
-			<Text styleName="avatar-title-big" style={{ paddingTop: 10 }}>{item.title}</Text>
-			<Text styleName="avatar-profession-big">{item.profession}</Text>
+			<Text styleName="avatar-title-big" style={{ paddingTop: 10 }}>{item.name}</Text>
+			<Text styleName="avatar-profession-big">{item.title}</Text>
 			<Text styleName="avatar-phone-big">{item.phone}</Text>
 		</View>)
 	}

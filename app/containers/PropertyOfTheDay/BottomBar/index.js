@@ -35,7 +35,7 @@ export  default class BottomBar extends Component {
 		if(!expanded){
 			this.setState({expanded: true});
 		}else if(selectedIndex != 1){
-			Linking.openURL(`tel:${contacts[selectedIndex]}`);
+			Linking.openURL(`tel:${contacts[selectedIndex].phone}`);
 		}
 
 
@@ -67,9 +67,9 @@ export  default class BottomBar extends Component {
 	renderContact = (contact, key) => (
 		<TouchableOpacity key={key} onPress={() => { this.setState({selectedIndex: key}) }}>
 			<View styleName="phone-contact">
-				<Image styleName="phone-avatar" source={{url: contact.avatar}}/>
-				<Text styleName="avatar-title">{contact.title}</Text>
-				<Text styleName="avatar-profession">{contact.profession}</Text>
+				<Image styleName="phone-avatar" source={{url: contact.image.uri}}/>
+				<Text styleName="avatar-title">{contact.name}</Text>
+				<Text styleName="avatar-profession">{contact.title}</Text>
 			</View>
 		</TouchableOpacity>
 	);
@@ -106,24 +106,5 @@ BottomBar.propTypes = {
 
 BottomBar.defaultProps = {
 	refNum: "01245",
-	contacts: [
-		{
-			avatar: 'https://yandex.by/images/today?size=1920x1080',
-			title: 'Cesar Zuluaga',
-			profession: 'Estate Seller King',
-			phone: '+1 (647) 779-68-18'
-		},
-		{
-			avatar: 'https://yandex.by/images/today?size=1920x1080',
-			title: 'Cesar Zuluaga',
-			profession: 'Estate Seller King',
-			phone: '+1 (647) 779-68-18'
-		},
-		{
-			avatar: 'https://yandex.by/images/today?size=1920x1080',
-			title: 'Cesar Zuluaga',
-			profession: 'Estate Seller King',
-			phone: '+1 (647) 779-68-18'
-		},
-	],
+	contacts: []
 }

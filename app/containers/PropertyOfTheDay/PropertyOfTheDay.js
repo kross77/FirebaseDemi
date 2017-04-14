@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, PropTypes} from "react";
 import {StyleSheet, Image, View} from "react-native";
 import {Tile, Button, Overlay, TouchableOpacity, ScrollView, Screen, Divider, Text, Title, Subtitle} from "@shoutem/ui";
 import {ScrollDriver} from "@shoutem/animation";
@@ -77,7 +77,8 @@ class PropertyOfTheDay extends Component {
 
 	render() {
 		const {header, loading} = this.state;
-		const { property } = this.props;
+		const { property, contacts } = this.props;
+		console.log('render', {property, contacts});
 		const { images } = property;
 		return (
 			<Screen>
@@ -108,7 +109,7 @@ class PropertyOfTheDay extends Component {
 					</ScrollView>
 				</View>
 
-				<BottomBar />
+				<BottomBar contacts={contacts} />
 
 			</Screen>
 
@@ -117,7 +118,9 @@ class PropertyOfTheDay extends Component {
 }
 
 PropertyOfTheDay.propTypes = {
-	property: Object,
+	property: PropTypes.object,
+	contacts: PropTypes.object,
+	name: PropTypes.string,
 }
 
 
