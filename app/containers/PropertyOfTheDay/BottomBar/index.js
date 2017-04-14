@@ -67,7 +67,7 @@ export  default class BottomBar extends Component {
 	renderContact = (contact, key) => (
 		<TouchableOpacity key={key} onPress={() => { this.setState({selectedIndex: key}) }}>
 			<View styleName="phone-contact">
-				<Image styleName="phone-avatar" source={{url: contact.image.uri}}/>
+				<Image styleName="phone-avatar" defaultSource={require('./../../../../assets/no-avatar.png')} source={{url: contact.image.uri}}/>
 				<Text styleName="avatar-title">{contact.name}</Text>
 				<Text styleName="avatar-profession">{contact.title}</Text>
 			</View>

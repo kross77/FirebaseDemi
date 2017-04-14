@@ -86,6 +86,7 @@ const Viewer = props =>
 			<TouchableWithoutFeedback onPress={e => props.pressHandle()}>
 				<PhotoView
 					source={{uri: item}}
+					defaultSource={require('./../../../../assets/no-photo.png')}
 					androidScaleType='center'
 					style={styles.photo} />
 			</TouchableWithoutFeedback>

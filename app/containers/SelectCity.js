@@ -71,6 +71,7 @@ class SelectCity extends Component {
 			console.log('parseTowns on value', items);
 			this.setState({
 				towns: items,
+				loading: false,
 			});
 
 		});
@@ -133,7 +134,7 @@ class SelectCity extends Component {
 	);
 
 	render() {
-		const {header, loading, contacts} = this.state;
+		const {header, loading, contacts, towns} = this.state;
 		return (
 				<Screen>
 					<Header
@@ -143,7 +144,10 @@ class SelectCity extends Component {
 					<View style={{flex: 1}}>
 						<ScrollView >
 							<Logo />
-							<Towns towns={this.state.towns} onItemPress={(item) => {
+							<Towns
+								towns={towns}
+								loading={loading}
+								onItemPress={(item) => {
 								this.props.addPropertyOfTheDayView(item, this.state.properties[item.propertyId], contacts)
 							}}/>
 						</ScrollView>

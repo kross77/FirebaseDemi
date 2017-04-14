@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from "react";
-import {StyleSheet, View, Dimensions} from "react-native";
+import {StyleSheet, View, Dimensions, ActivityIndicator} from "react-native";
 import {Title, Image, Overlay, TouchableOpacity, Screen, GridRow, ListView} from "@shoutem/ui";
 import {ScrollDriver} from "@shoutem/animation";
 
@@ -35,9 +35,9 @@ class Towns extends Component {
 	}
 
 
-	componentWillReceiveProps(newProps){
+	componentWillReceiveProps(newProps) {
 		let {towns} = newProps;
-		if(towns){
+		if (towns) {
 			console.log('componentWillReceiveProps', {towns}, newProps);
 			this.state = {
 				listData: towns,
@@ -49,10 +49,13 @@ class Towns extends Component {
 	renderRow(rowData, sectionId, index) {
 		const cellViews = rowData.map((item, id) => {
 			return (
-				<TouchableOpacity onPress={ () => {this.props.onItemPress(item)}} style={{paddingLeft: 2, paddingRight: 2, paddingTop: 2, paddingBottom:2}} key={id}>
+				<TouchableOpacity onPress={ () => {
+					this.props.onItemPress(item)
+				}} style={{paddingLeft: 2, paddingRight: 2, paddingTop: 2, paddingBottom: 2}} key={id}>
 
 					<Image
-						style={{ backgroundColor: 'transparent', height: window.height / 5 }}
+						style={{backgroundColor: 'transparent', height: window.height / 5}}
+						defaultSource={require('../../assets/no-town.png')}
 						source={item.image}
 					>
 						<Overlay style={{flex: 1, width: 200}}>
@@ -64,7 +67,7 @@ class Towns extends Component {
 			);
 		});
 		return (
-			<GridRow columns={2} style={{ backgroundColor: 'transparent', paddingLeft: 13, paddingRight: 13}}>
+			<GridRow columns={2} style={{backgroundColor: 'transparent', paddingLeft: 13, paddingRight: 13}}>
 				{cellViews}
 			</GridRow>
 		);
@@ -78,12 +81,28 @@ class Towns extends Component {
 			return 1;
 		});
 		console.log('render Features', groupedData);
+		const {loading} = this.props;
 		return (
 			<Screen style={{backgroundColor: 'transparent'}}>
-				<ListView
-					data={groupedData}
-					renderRow={this.renderRow}
-				/>
+				{
+					loading ?
+						<ActivityIndicator
+							animating={this.state.animating}
+							style={{
+								alignItems: 'center',
+								justifyContent: 'center',
+								padding: 8,
+								height: 80
+							}}
+							size="large"
+						/>
+						:
+						<ListView
+							data={groupedData}
+							renderRow={this.renderRow}
+						/>
+				}
+
 			</Screen>
 		);
 	}
@@ -96,9 +115,11 @@ Towns.propTypes = {
 	onItemPress: PropTypes.func,
 	source: PropTypes.any,
 	towns: PropTypes.array,
+	loading: PropTypes.bool,
 };
 
 Towns.defaultProps = {
 	source: {"uri": "https://yandex.by/images/today?size=1920x1080"},
+	loading: true,
 }
 
